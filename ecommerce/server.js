@@ -76,6 +76,71 @@ app.post('/api/inserir_produto', (req, res) => {
     });
 });
 
+const bcrypt = require('bcrypt');
+
+// Rota para login
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Verifique se o usuário existe no banco de dados
+    db.query('SELECT * FROM usuarios WHERE username = ?', [username], (err, results) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: "Erro no servidor" });
+        }
+
+        if (results.length === 0) {
+            return res.status(401).json({ success: false, message: "Usuário não encontrado" });
+        }
+
+        const user = results[0];
+
+        // Verifique a senha
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+            if (err) {
+                return res.status(500).json({ success: false, message: "Erro ao verificar senha" });
+            }
+
+            if (isMatch) {
+                // Autenticação bem-sucedida
+                res.json({ success: true, message: "Login realizado com sucesso!" });
+            } else {
+                res.status(401).json({ success: false, message: "Senha incorreta" });
+            }
+        });
+    });
+});
+
+// Rota para cadastro de usuário
+app.post('/api/cadastro', (req, res) => {
+    const { username, password } = req.body;
+
+    // Verificar se o usuário já existe
+    db.query('SELECT * FROM usuarios WHERE username = ?', [username], (err, results) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: "Erro no servidor" });
+        }
+
+        if (results.length > 0) {
+            return res.status(409).json({ success: false, message: "Usuário já existe" });
+        }
+
+        // Criptografar a senha antes de salvar no banco de dados
+        bcrypt.hash(password, 10, (err, hash) => {
+            if (err) {
+                return res.status(500).json({ success: false, message: "Erro ao criptografar a senha" });
+            }
+
+            // Inserir o novo usuário no banco de dados
+            db.query('INSERT INTO usuarios (username, password) VALUES (?, ?)', [username, hash], (err, result) => {
+                if (err) {
+                    return res.status(500).json({ success: false, message: "Erro ao cadastrar usuário" });
+                }
+                res.json({ success: true, message: "Usuário cadastrado com sucesso!" });
+            });
+        });
+    });
+});
+
 // Inicia o servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);

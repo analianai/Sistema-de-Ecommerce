@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
-
 function finalizarPedido() {
     fetch("/api/checkout", {
         method: "POST",
@@ -39,8 +38,6 @@ function finalizarPedido() {
     .catch(error => console.error("Erro ao finalizar o pedido:", error));
 }
 
-
-
 function adicionarAoCarrinho(id, nome, preco) {
     const produtoExistente = carrinho.find(item => item.id === id);
     if (produtoExistente) {
@@ -52,4 +49,3 @@ function adicionarAoCarrinho(id, nome, preco) {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
     alert("Produto adicionado ao carrinho!");
 }
-
