@@ -54,3 +54,5 @@ button {
     width: 60px;
     margin-top: 5px;
 }
+
+#error-message{color: red}
