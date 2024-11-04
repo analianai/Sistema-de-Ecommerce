@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Produto</title>
+    <link rel="stylesheet" href="asset/css/style_produto.css">
+</head>
+<body>
+    <a href="index.html">Inicio</a>
+    <a href="inserir_produto.html">Inserir Novo Produto</a>
+    <a href="carrinho.html">Ver Carrinho</a>
+
+    <h1>Inserir Novo Produto</h1>
+    <form id="produtoForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" name="preco" step="0.01" required>
+
+        <label for="imagem">URL da Imagem:</label>
+        <input type="text" id="imagem" name="imagem">
+
+        <button type="submit">Adicionar Produto</button>
+    </form>
+
+    <script src="asset/js/script_produto.js"></script>
+</body>
+</html>

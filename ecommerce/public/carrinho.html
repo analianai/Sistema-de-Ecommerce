@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body>
+    <a href="index.html">Inicio</a>
+    <a href="inserir_produto.html">Inserir Novo Produto</a>
+    <a href="carrinho.html">Ver Carrinho</a>
+
+    <h1>Carrinho de Compras</h1>
+    <div id="carrinho-container"></div>
+    <h2>Total: R$<span id="total"></span></h2>
+    <button onclick="finalizarPedido()">Finalizar Pedido</button>
+    <button onclick="window.location.href='index.html'">Continuar Comprando</button>
+
+    <script src="asset/js/carrinho.js"></script>
+</body>
+</html>
