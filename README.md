@@ -8,13 +8,17 @@ Projeto completo de um e-commerce básico com Node.js, Express, MySQL e JavaScri
 
 ````plaintext
 ecommerce/
-├── server.js               # Arquivo principal do servidor
-├── db.js                   # Arquivo de configuração do banco de dados
+├── server.js                # Arquivo principal do servidor
+├── db.js                    # Arquivo de configuração do banco de dados
 ├── public/
-│   ├── index.html          # Página inicial com listagem de produtos
-│   ├── style.css           # Estilos para a página
-│   └── script.js           # Scripts do frontend para interações com a API
-└── package.json            # Dependências e configurações do Node.js
+│   ├── index.html           # Página inicial com listagem de produtos
+│   ├── login.html           # Login do sistema
+│   ├── cadastro.html        # Cadastro de Usuario
+│   ├── carrinho.html        # Carrinho de compras
+│   ├── inserir_produto.html # Inserção de produtos
+│   ├── style.css            # Estilos para a página
+│   └── script.js            # Scripts do frontend para interações com a API
+└── package.json             # Dependências e configurações do Node.js
 ````
 
 ### Passo 1: Configuração do Banco de Dados MySQL
